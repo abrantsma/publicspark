@@ -48,7 +48,7 @@ def index(request):
     spark = CiscoSparkAPI(access_token=bearer)
     webhook = json.loads(request.body)
     room_id = webhook['data']['roomId']
-    print webhook['data']['id']
+    print webhook['data']
     result = sendSparkGET('https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
     result = json.loads(result)
     msg = None
