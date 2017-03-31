@@ -7,7 +7,7 @@ import json
 
 bot_email = "jukkmoddr@sparkbot.io"
 bot_name = "Test"
-bearer = "ZTlkYzU2MGQtNWZlOC00MTA5LWE5MzYtMjdiYjMyNzA5NTYzNjBlYjU3NWMtYjg4"
+bearer = "MzBjZTAzZDMtYzZmNS00YmQyLTg4MjQtMjUyOTcyNzk4NzUyNTQzNTRjODctNzFk"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
 
