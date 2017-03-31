@@ -1,7 +1,7 @@
 from itty import *
 import urllib2
 import json
-from ciscospark import CiscoSparkAPI
+from ciscosparkapi import CiscoSparkAPI
 import requests
 import sys
 import os
