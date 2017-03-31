@@ -21,13 +21,18 @@
 # we already import the following libs: 
 #from flask import Flask, request
 #from ciscosparkapi import CiscoSparkAPI
-# import os
-# import sys
-# import json 
+import flask
+from flask import Flask, request
+import requests
+import ciscosparkapi
+from ciscosparkapi import CiscoSparkAPI
+import os
+import sys
+import json 
 
-# here's code that will work right away and echo the comments of a 
-# received message:
 
+# Create an instance of Flask
+app = Flask(__name__)
 
 def spark_handler(post_data, message):
 	# get the room id: 
