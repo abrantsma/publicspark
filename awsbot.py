@@ -11,7 +11,7 @@ bearer = "MzBjZTAzZDMtYzZmNS00YmQyLTg4MjQtMjUyOTcyNzk4NzUyNTQzNTRjODctNzFk"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
 
-spark = CiscoSparkAPI(access_token=bearer)
+
 
 def sendSparkGET(url):
     """
@@ -36,6 +36,7 @@ def index(request):
     /batcave   - echoes the incoming text to the room
     /batsignal - replies to the room with an image
     """
+    spark = CiscoSparkAPI(access_token=bearer)
     webhook = json.loads(request.body)
     print webhook['data']['id']
     result = sendSparkGET('https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
