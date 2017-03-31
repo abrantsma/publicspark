@@ -1,16 +1,33 @@
-from flask import Flask, request, abort
+# import Flask
+from flask import Flask, request
 
+# Create an instance of Flask
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['POST'])
-def webhook():
-	print('hi')
-	# if request.method == 'POST':
-	# 	print(request.json)
-	# 	return '',200
-	# else:
-	# 	abort(400)
+# Index page will trigger index() function
+@app.route('/')
+def index():
+    return 'Hello World'
 
-if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=10010)
+# Webhook page will trigger webhooks() function
+@app.route("/webhook", methods=['POST'])
+def webhooks():
 
+    # Get the json data
+    json = request.json
+
+    
+    print(json)
+
+    # # check if the message is the command to get hosts
+    # if message == "GET HOSTS":
+    #     # get list of hosts from APIC-EM Controller
+    #     hosts = gethosts.main()
+    #     # post the list of hosts into the Spark room
+    #     postmessage.main(person_id, person_email, room_id, hosts)
+    # else:
+    #    print("do nothing")
+
+# run the application
+if __name__ == "__main__":
+    app.run()
