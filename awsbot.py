@@ -45,6 +45,7 @@ def index(request):
     /batcave   - echoes the incoming text to the room
     /batsignal - replies to the room with an image
     """
+    spark = CiscoSparkAPI(access_token=bearer)
     webhook = json.loads(request.body)
     room_id = webhook['data']['roomId']
     print webhook['data']['id']
