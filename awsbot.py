@@ -46,6 +46,7 @@ def index(request):
     /batsignal - replies to the room with an image
     """
     webhook = json.loads(request.body)
+    room_id = webhook['data']['roomId']
     print webhook['data']['id']
     result = sendSparkGET('https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
     result = json.loads(result)
@@ -55,7 +56,7 @@ def index(request):
         in_message = in_message.replace(bot_name, '')
         if 'start' in in_message:
             msg = "Test will initiate"
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
+            spark.messages.create(roomId=room_id, text= msg)
     return "true"
 
 
