@@ -52,7 +52,7 @@ def index(request):
     result = spark.messages.get(message_id)
     msg = None
     if webhook['data']['personEmail'] != bot_email:
-        in_message = result['text']
+        in_message = result.text
         # in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         memberList = spark.memberships.list(roomId=room_id)
