@@ -1,5 +1,5 @@
 from itty import *
-import urllib2
+import urllib3
 import json
 from ciscosparkapi import CiscoSparkAPI
 import requests
@@ -7,8 +7,8 @@ import sys
 import os
 import warnings 
 
-warnings.filterwarnings("ignore", category=Warning, module='urllib2')
 
+urllib3.disable_warnings()
 
 def sendSparkGET(url):
     """
@@ -16,11 +16,11 @@ def sendSparkGET(url):
         -retrieving message text, when the webhook is triggered with a message
         -Getting the username of the person who posted the message if a command is recognized
     """
-    request = urllib2.Request(url,
+    request = urllib3.Request(url,
                             headers={"Accept" : "application/json",
                                      "Content-Type":"application/json"})
     request.add_header("Authorization", "Bearer "+bearer)
-    contents = urllib2.urlopen(request).read()
+    contents = urllib3.urlopen(request).read()
     return contents
    
 def sendSparkPOST(url, data):
@@ -28,11 +28,11 @@ def sendSparkPOST(url, data):
     This method is used for:
         -posting a message to the Spark room to confirm that a command was received and processed
     """
-    request = urllib2.Request(url, json.dumps(data),
+    request = urllib3.Request(url, json.dumps(data),
                             headers={"Accept" : "application/json",
                                      "Content-Type":"application/json"})
     request.add_header("Authorization", "Bearer "+bearer)
-    contents = urllib2.urlopen(request).read()
+    contents = urllib3.urlopen(request).read()
     return contents
    
 
