@@ -60,13 +60,14 @@ def index(request):
         if 'start' in in_message:
             msg = "Test will initiate"
             spark.messages.create(roomId=room_id, text= msg)
-            for Membership in memberList:
+            for Membership in memberList if Membership.personEmail != bot_email or Membership != security_email:
                 spark.messages.create(toPersonEmail=Membership.personEmail, text="how can I help")
     return "true"
 
 
 ####CHANGE THESE VALUES#####
 bot_email = "awstest1@sparkbot.io"
+security_email = "spark-cisco-it-admin-bot@cisco.com"
 bot_name = "awstest1"
 bearer = "MjViMjgwMzQtMGY5MC00MGYwLTk2YmUtNGQwOTc5OTVkODc4ODc3ZDRkY2MtZDA3"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
