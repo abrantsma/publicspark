@@ -60,7 +60,8 @@ def index(request):
         if 'start' in in_message:
             msg = "Test will initiate"
             spark.messages.create(roomId=room_id, text= msg)
-            for Membership in memberList if Membership.personEmail != bot_email or Membership.personEmail != security_email:
+            for Membership in memberList: 
+                if Membership.personEmail != bot_email or Membership.personEmail != security_email:
                 spark.messages.create(toPersonEmail=Membership.personEmail, text="how can I help")
     return "true"
 
