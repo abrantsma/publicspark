@@ -5,9 +5,9 @@ from ciscosparkapi import CiscoSparkAPI
 import requests
 import sys
 import os
-import warnings
+import warnings 
 
-warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
+warnings.filterwarnings("ignore", category=Warning, module='urllib2')
 
 
 def sendSparkGET(url):
