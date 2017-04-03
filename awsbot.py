@@ -5,7 +5,10 @@ import requests
 import sys
 import os
 import warnings 
+import certifi
+import urllib3
 
+urllib3.disable_warnings()
 
 @post('/')
 def index(request):
