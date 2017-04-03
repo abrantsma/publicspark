@@ -62,8 +62,7 @@ def index(request):
 
 
 ####CHANGE THESE VALUES#####
-bot_email = "jukkmoddr@sparkbot.io"
-bot_name = "Test"
-bearer = "NWQwMWUzMWYtZWFjYi00YzFkLWJlMWQtODg5NDZkNmU5OTFmZDllNmJkZGUtMGM2"
-bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
+bot_email = "awstest1@sparkbot.io"
+bot_name = "awstest1"
+bearer = "MjViMjgwMzQtMGY5MC00MGYwLTk2YmUtNGQwOTc5OTVkODc4ODc3ZDRkY2MtZDA3"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
