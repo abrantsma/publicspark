@@ -50,10 +50,10 @@ def index(request):
     room_id = webhook['data']['roomId']
     message_id = webhook['data']['id']
     result = spark.messages.get(message_id)
-    print result
     msg = None
     if webhook['data']['personEmail'] != bot_email:
-        in_message = result.get('text', '').lower()
+        in_message = result['text']
+        # in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         memberList = spark.memberships.list(roomId=room_id)
         if 'start' in in_message:
