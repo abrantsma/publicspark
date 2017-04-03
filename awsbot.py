@@ -7,8 +7,9 @@ import os
 import warnings 
 import certifi
 import urllib3
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 @post('/')
 def index(request):
