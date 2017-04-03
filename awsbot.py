@@ -62,7 +62,7 @@ def index(request):
             spark.messages.create(roomId=room_id, text= msg)
             for Membership in memberList: 
                 if Membership.personEmail != bot_email or Membership.personEmail != security_email:
-                spark.messages.create(toPersonEmail=Membership.personEmail, text="how can I help")
+                    spark.messages.create(toPersonEmail=Membership.personEmail, text="how can I help")
     return "true"
 
 
