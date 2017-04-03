@@ -48,16 +48,18 @@ def index(request):
     spark = CiscoSparkAPI(access_token=bearer)
     webhook = json.loads(request.body)
     room_id = webhook['data']['roomId']
-    print webhook['data']
     result = sendSparkGET('https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
     result = json.loads(result)
     msg = None
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
+        memberList = spark.memberships.list(roomId=room_id)
         if 'start' in in_message:
             msg = "Test will initiate"
             spark.messages.create(roomId=room_id, text= msg)
+            for Membership in memberList:
+                spark.messages.create(toPersonEmail=Membership.personEmail, text="how can I help")
     return "true"
 
 
