@@ -4,10 +4,6 @@ from ciscosparkapi import CiscoSparkAPI
 import requests
 import sys
 import os
-import warnings 
-import urllib3.contrib.pyopenssl
-
-urllib3.contrib.pyopenssl.inject_into_urllib3()
 
 @post('/')
 def index(request):
