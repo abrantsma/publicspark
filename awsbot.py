@@ -5,11 +5,9 @@ import requests
 import sys
 import os
 import warnings 
-import certifi
-import urllib3
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import urllib3.contrib.pyopenssl
 
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+urllib3.contrib.pyopenssl.inject_into_urllib3()
 
 @post('/')
 def index(request):
