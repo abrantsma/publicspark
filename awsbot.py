@@ -8,7 +8,7 @@ import os
 import warnings 
 
 
-urllib3.disable_warnings()
+# urllib3.disable_warnings()
 
 def sendSparkGET(url):
     """
