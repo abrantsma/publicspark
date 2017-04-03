@@ -35,7 +35,7 @@ def sendSparkPOST(url, data):
    
 
 
-@post('')
+@post('/')
 def index(request):
     """
     When messages come in from the webhook, they are processed here.  The message text needs to be retrieved from Spark,
