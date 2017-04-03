@@ -47,11 +47,10 @@ def index(request):
     """
     spark = CiscoSparkAPI(access_token=bearer)
     webhook = json.loads(request.body)
-    print webhook
     room_id = webhook['data']['roomId']
-    # result = spark.messages.get()
-    result = sendSparkGET('https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
-    result = json.loads(result)
+    message_id = webhook['data']['id']
+    result = spark.messages.get(message_id)
+    print result
     msg = None
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
