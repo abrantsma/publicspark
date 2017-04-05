@@ -4,6 +4,7 @@ from ciscosparkapi import CiscoSparkAPI
 import requests
 import sys
 import os
+from generateResponse.py import generateResponse
 
 @post('/')
 def index(request):
