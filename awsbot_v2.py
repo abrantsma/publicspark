@@ -19,6 +19,7 @@ def index(request):
     webhook = json.loads(request.body)
     room_id = webhook['data']['roomId']
     message_id = webhook['data']['id']
+    print message_id
     message = spark.messages.get(message_id)
     if webhook['data']['personEmail'] != bot_email:
         in_message = message.text.replace(bot_name, '')
