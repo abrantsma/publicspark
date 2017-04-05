@@ -29,7 +29,7 @@ def index(request):
             spark.messages.create(roomId=room_id, text="Test will initiate") # Message the room.
             for Membership in memberList: # Message each member in the room individually.
                 if Membership.personEmail != bot_email or Membership.personEmail != security_email:
-                    INTRO_MESSAGE = "“You have been invited to brainstorming session %s. Type ‘help’ for a brief introduction on how I work! What is your idea?”" % (message.roomId)
+                    INTRO_MESSAGE = "You have been invited to brainstorming session %s. Type ‘help’ for a brief introduction on how I work! What is your idea?" % (message.roomId)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=INTRO_MESSAGE)
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
