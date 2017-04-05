@@ -23,7 +23,7 @@ def index(request):
     message = spark.messages.get(message_id)
     if webhook['data']['personEmail'] != bot_email:
         in_message = message.text.replace(bot_name, '')
-        if message.type == "group" and 'start' in in_message:
+        if message.roomType == "group" and 'start' in in_message:
             memberList = spark.memberships.list(roomId=room_id)
             spark.messages.create(roomId=room_id, text="Test will initiate") # Message the room.
             for Membership in memberList: # Message each member in the room individually.
