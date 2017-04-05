@@ -41,8 +41,9 @@ def index(request):
                 if Membership.personEmail != bot_email or Membership.personEmail != security_email:
                     END_MESSAGE = "Brainstorming session %s is ending." % (message.roomId)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=END_MESSAGE)
-                    #TODO: Give everyone's idea by creating the method getIdea() in the database file.
-                    spark.messages.create(roomId=room_id, text=getIdea(Membership.personEmail, room_id))
+            #TODO: Send the best idea to the group chat.
+            BEST_IDEA = "The best idea." #getBestIdea(room_id)
+            #spark.messages.create(roomId=room_id, text=BEST_IDEA)
         else:
             if message.roomType == "direct":
                 if in_message == "help":
