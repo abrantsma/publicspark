@@ -26,7 +26,7 @@ def index(request):
         if message.roomType == "group" and 'start' in in_message:
             memberList = spark.memberships.list(roomId=room_id)
             GROUP_MESSAGE = "Brainstorming session for %s is starting." % (message.roomId)
-            spark.messages.create(roomId=room_id, text="Test will initiate") # Message the room.
+            spark.messages.create(roomId=room_id, text=GROUP_MESSAGE) # Message the room.
             for Membership in memberList: # Message each member in the room individually.
                 if Membership.personEmail != bot_email or Membership.personEmail != security_email:
                     INTRO_MESSAGE = "You have been invited to brainstorming session %s. Type ‘help’ for a brief introduction on how I work! What is your idea?" % (message.roomId)
