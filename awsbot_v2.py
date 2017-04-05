@@ -36,7 +36,7 @@ def index(request):
         else:
             if message.roomType == "direct":
                 if in_message == "-help":
-                    spark.messages.create(toPersonEmail=message.personEmail, text="explanation of how this works")
+                    spark.messages.create(toPersonEmail=message.personEmail, text="explanation of how this works, what is your idea")
                     return "true"
                 #Temp making sure it tries to do this:
                 spark.messages.create(toPersonEmail=message.personEmail, text="processing...")
