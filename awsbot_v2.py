@@ -33,6 +33,16 @@ def index(request):
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=INTRO_MESSAGE)
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
+        elif message.roomType == "group" and ‘end’ in in_message:
+            memberList = spark.memberships.list(roomId=room_id)
+            GROUP_MESSAGE = "Brainstorming session for %s is ending." % (message.roomId)
+            spark.messages.create(roomId=room_id, text=GROUP_MESSAGE) # Message the room.
+            for Membership in memberList: # Message each member in the room individually.
+                if Membership.personEmail != bot_email or Membership.personEmail != security_email:
+                    END_MESSAGE = "Brainstorming session %s is ending." % (message.roomId)
+                    spark.messages.create(toPersonEmail=Membership.personEmail, text=END_MESSAGE)
+                    #TODO: Give everyone's idea by creating the method getIdea() in the database file.
+                    spark.messages.create(roomId=room_id, text=getIdea(Membership.personEmail, room_id))
         else:
             if message.roomType == "direct":
                 if in_message == "-help":
