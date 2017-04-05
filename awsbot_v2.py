@@ -30,7 +30,7 @@ def index(request):
                     spark.messages.create(toPersonEmail=Membership.personEmail, text="how can I help")
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
-        else
+        else:
             if message.type == "direct":
                 # TODO: Save message. Generate response. Save response. Send response.
                 sendToDatabase(message.text, message.personEmail, bot_email)
