@@ -21,25 +21,26 @@ def index(request):
     room_id = webhook['data']['roomId']
     message_id = webhook['data']['id']
     message = spark.messages.get(message_id)
+    room_name = spark.rooms.get(room_id)
     if webhook['data']['personEmail'] != bot_email:
         in_message = message.text.replace(bot_name, '')
         if message.roomType == "group" and 'start' in in_message:
             memberList = spark.memberships.list(roomId=room_id)
-            GROUP_MESSAGE = "Brainstorming session for %s is starting." % (message.roomId)
+            GROUP_MESSAGE = "Brainstorming session for %s is starting." % (room_id.title)
             spark.messages.create(roomId=room_id, text=GROUP_MESSAGE) # Message the room.
             for Membership in memberList: # Message each member in the room individually.
                 if Membership.personEmail != bot_email or Membership.personEmail != security_email:
-                    INTRO_MESSAGE = "You have been invited to brainstorming session %s. Type 'help' for a brief introduction on how I work! What is your idea?" % (message.roomId)
+                    INTRO_MESSAGE = "You have been invited to brainstorming session %s. Type 'help' for a brief introduction on how I work! What is your idea?" % (room_id.title)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=INTRO_MESSAGE)
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
         elif message.roomType == "group" and "end" in in_message:
             memberList = spark.memberships.list(roomId=room_id)
-            GROUP_MESSAGE = "Brainstorming session for %s is ending." % (message.roomId)
+            GROUP_MESSAGE = "Brainstorming session for %s is ending." % (room_id.title)
             spark.messages.create(roomId=room_id, text=GROUP_MESSAGE) # Message the room.
             for Membership in memberList: # Message each member in the room individually.
                 if Membership.personEmail != bot_email or Membership.personEmail != security_email:
-                    END_MESSAGE = "Brainstorming session %s is ending." % (message.roomId)
+                    END_MESSAGE = "Brainstorming session %s is ending." % (room_id.title)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=END_MESSAGE)
             #TODO: Send the best idea to the group chat.
             BEST_IDEA = "The best idea." #getBestIdea(room_id)
