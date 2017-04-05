@@ -33,6 +33,9 @@ def index(request):
                     # Likely another database. This one is roomId, memberList.
         else:
             if message.roomType == "direct":
+                if in_message == "help":
+                    spark.messages.create(toPersonEmail=message.personEmail, text="explanation of how this works")
+                    return "true"
                 #Temp making sure it tries to do this:
                 spark.messages.create(toPersonEmail=message.personEmail, text="processing...")
                 # TODO: Save message. Generate response. Save response. Send response.
