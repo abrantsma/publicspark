@@ -19,7 +19,6 @@ def index(request):
     webhook = json.loads(request.body)
     room_id = webhook['data']['roomId']
     message_id = webhook['data']['id']
-    print message_id
     message = spark.messages.get(message_id)
     if webhook['data']['personEmail'] != bot_email:
         in_message = message.text.replace(bot_name, '')
@@ -32,7 +31,7 @@ def index(request):
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
         else:
-            if message.type == "direct":
+            if message.roomType == "direct":
                 # TODO: Save message. Generate response. Save response. Send response.
                 sendToDatabase(message.text, message.personEmail, bot_email)
                 # Database definition: Message, From, To.
