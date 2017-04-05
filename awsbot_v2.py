@@ -43,7 +43,7 @@ def index(request):
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=END_MESSAGE)
             #TODO: Send the best idea to the group chat.
             BEST_IDEA = "The best idea." #getBestIdea(room_id)
-            #spark.messages.create(roomId=room_id, text=BEST_IDEA)
+            spark.messages.create(roomId=room_id, text=BEST_IDEA)
         else:
             if message.roomType == "direct":
                 if in_message == "help":
