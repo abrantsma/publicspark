@@ -5,6 +5,7 @@ import requests
 import sys
 import os
 from generateResponse import generateResponse
+from DBconnect import sendToDatabase
 
 @post('/')
 def index(request):
