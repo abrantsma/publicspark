@@ -17,24 +17,33 @@ def index(request):
     /batcave   - echoes the incoming text to the room
     /batsignal - replies to the room with an image
     """
-    spark = CiscoSparkAPI(access_token=bearer)
-    webhook = json.loads(request.body)
-    room_id = webhook['data']['roomId']
-    message_id = webhook['data']['id']
-    message = spark.messages.get(message_id)
-    room_name = spark.rooms.get(room_id)
+    spark = CiscoSparkAPI(access_token=bearer) # spark apis
+    webhook = json.loads(request.body) # get payload from webhook
+    room_id = webhook['data']['roomId'] # get room id from message
+    message_id = webhook['data']['id'] # get message id
+    message = spark.messages.get(message_id) # retrieve message using message id
+    room_name = spark.rooms.get(room_id) # retrieve room information to get the room name
+
+    # Code for the bot to speak. First we make sure that it only responds to messages NOT from the bot itself
     if webhook['data']['personEmail'] != bot_email:
+        # parse the initiation message to remove the bot tag
         in_message = message.text.replace(bot_name, '')
+        # conditional for the initiation of the test. 
+        # here we filter for a message from a "group" room and for the message "start"
+        # If it matches then send a message to the group room, and also send a message to each person individually
         if message.roomType == "group" and 'start' in in_message:
             memberList = spark.memberships.list(roomId=room_id)
             GROUP_MESSAGE = "Brainstorming session for '%s' is starting." % (room_name.title)
             spark.messages.create(roomId=room_id, text=GROUP_MESSAGE) # Message the room.
             for Membership in memberList: # Message each member in the room individually.
-                if Membership.personEmail != bot_email and Membership.personEmail != security_email:
+                if Membership.personEmail != bot_email and Membership.personEmail != security_email: # filter out the bot and cisco security bot, we dont want to send them a message!
                     INTRO_MESSAGE = "You have been invited to brainstorming session '%s'. Type 'help' for a brief introduction on how I work! What is your idea?" % (room_name.title)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=INTRO_MESSAGE)
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
+        # conditional to end the test
+        # same idea as above but then for the word end
+        # should also post the final idea into the group room
         elif message.roomType == "group" and "end" in in_message:
             memberList = spark.memberships.list(roomId=room_id)
             GROUP_MESSAGE = "Brainstorming session for '%s' is ending." % (room_name.title)
@@ -46,6 +55,7 @@ def index(request):
             #TODO: Send the best idea to the group chat.
             BEST_IDEA = "The best idea." #getBestIdea(room_id)
             spark.messages.create(roomId=room_id, text=BEST_IDEA)
+        # looks for personal messages in 1:1 conversations. These messages need to be saved to our database
         else:
             if message.roomType == "direct":
                 if in_message == "help":
