@@ -1,4 +1,4 @@
-import mysql.connector
+import MySQLdb
 
 
 cnx = mysql.connector.connect(user='brainspark', password='C!sco123',
