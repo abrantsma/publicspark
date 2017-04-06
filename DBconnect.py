@@ -5,7 +5,7 @@ def sendToDatabase(message, personEmail, bot):
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	mycursor.execute("INSERT INTO ideas (userID,q1,q2) VALUES (?,?,?)", (personEmail,message,bot))
+	mycursor.execute("INSERT INTO ideas (userID,q1,q2) VALUES (%s,%s,%s)", (personEmail,message,bot))
 	conn.commit()
 	return "true"
 # print(mycursor.fetchall())
