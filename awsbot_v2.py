@@ -9,14 +9,6 @@ from DBconnect import sendToDatabase
 
 @post('/')
 def index(request):
-    """
-    When messages come in from the webhook, they are processed here.  The message text needs to be retrieved from Spark,
-    using the sendSparkGet() function.  The message text is parsed.  If an expected command is found in the message,
-    further actions are taken. i.e.
-    /batman    - replies to the room with text
-    /batcave   - echoes the incoming text to the room
-    /batsignal - replies to the room with an image
-    """
     spark = CiscoSparkAPI(access_token=bearer) # spark apis
     webhook = json.loads(request.body) # get payload from webhook
     room_id = webhook['data']['roomId'] # get room id from message
@@ -78,7 +70,7 @@ def index(request):
 
 #TODO: sendToDatabase(), generateResponse().
 
-####CHANGE THESE VALUES#####
+
 bot_email = "awstest1@sparkbot.io"
 security_email = "spark-cisco-it-admin-bot@cisco.com"
 bot_name = "awstest1"
