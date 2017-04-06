@@ -4,7 +4,6 @@ from ciscosparkapi import CiscoSparkAPI
 import requests
 import sys
 import os
-import mysql.connector
 from generateResponse import generateResponse
 
 @post('/')
@@ -17,11 +16,6 @@ def index(request):
     /batcave   - echoes the incoming text to the room
     /batsignal - replies to the room with an image
     """
-
-conn = mysql.connector.connect(user='brainspark', password='C!sco123',
-                              host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
-                              database='brainspark')
-mycursor=conn.cursor()
 
 
 
@@ -55,8 +49,7 @@ mycursor=conn.cursor()
             #TODO: Send the best idea to the group chat.
             BEST_IDEA = "The best idea." #getBestIdea(room_id)
             spark.messages.create(roomId=room_id, text=BEST_IDEA)
-            mycursor.execute("INSERT INTO ideas (userID,q1) VALUES (?,?)", (GROUP_MESSAGE,room_name))
-            conn.commit()
+            
         else:
             if message.roomType == "direct":
                 if in_message == "help":
