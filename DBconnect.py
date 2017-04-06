@@ -7,9 +7,11 @@ def sendToDatabase(message, personEmail, bot):
 	mycursor=conn.cursor()
 	mycursor.execute("INSERT INTO ideas (userID,q1) VALUES (?,?)", (personEmail,message))
 	conn.commit()
+	return "true"
 # print(mycursor.fetchall())
 
 def pullFromDatabase(message, personEmail):
+	return "true"
 
 
 sendToDatabase("hallo", "ctsioura@cisco.com", "test@cisco.com")
