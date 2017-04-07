@@ -6,7 +6,7 @@ def createDatabase(personName):
                               database='brainspark')
 	mycursor=conn.cursor()
 	ID_NUMBER = 2568
-	mycursor.execute("CREATE TABLE '%s' (QUESTION INT PRIMARY KEY AUTO_INCREMENT)" % (personName))
+	mycursor.execute("CREATE TABLE %s (QUESTION INT PRIMARY KEY AUTO_INCREMENT)" % (personName))
 	conn.commit()
 	return "true"
 
