@@ -20,7 +20,7 @@ def sendToDatabase(personName,answer):
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	mycursor.execute("INSERT INTO %s (Answer) VALUES (%s)" % (personName,answer))
+	mycursor.execute("INSERT INTO %s (Answer) VALUES ('%s')" % (personName,answer))
 	conn.commit()
 	return "true"
 # print(mycursor.fetchall())
