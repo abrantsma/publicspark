@@ -15,7 +15,7 @@ def pullFromDatabase(message, personEmail):
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	sql = "SELECT * FROM ideas WHERE q2 '%s'" % ("test@cisco.com")
+	sql = "SELECT * FROM ideas WHERE q2 '%s'" % ('test@cisco.com')
 	try:
 		mycursor.execute(sql)
 		results = mycursor.fetchall()
