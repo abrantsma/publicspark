@@ -20,7 +20,7 @@ def pullFromDatabase(message, personEmail):
 		mycursor.execute(sql)
 		results = mycursor.fetchall()
 		print(results)
-	conn.commit()
+	# conn.commit()
 	return "true"
 
 
