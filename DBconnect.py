@@ -21,4 +21,4 @@ def pullFromDatabase(message, personEmail):
 
 
 sendToDatabase("hallo", 10, "test@cisco.com")
-pullFromDatabase(message, personEmail)
+pullFromDatabase("message", "personEmail")
