@@ -21,7 +21,7 @@ def sendToDatabase(personName,message, personEmail, bot):
                               database='brainspark')
 	mycursor=conn.cursor()
 	ID_NUMBER = 2568
-	mycursor.execute("INSERT INTO %s (userID,q1,q2)", % (personName,ID_NUMBER,message,bot))
+	mycursor.execute("INSERT INTO %s (userID,q1,q2)" % (personName,ID_NUMBER,message,bot))
 	conn.commit()
 	return "true"
 # print(mycursor.fetchall())
