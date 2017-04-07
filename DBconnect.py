@@ -19,7 +19,7 @@ def pullFromDatabase(message, personEmail):
 	try:
 		mycursor.execute(sql)
 		results = mycursor.fetchall()
-		print (results)
+		print "hello"
 	except:
 		print "hi"
 	conn.commit()
