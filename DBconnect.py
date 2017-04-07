@@ -11,11 +11,11 @@ def sendToDatabase(message, personEmail, bot):
 # print(mycursor.fetchall())
 
 def pullFromDatabase(message, personEmail):
-	sql = "SELECT * FROM ideas"
-	mycursor.execute(sql)
+	mycursor.execute("SELECT * FROM ideas")
 	a=mycursor.execute(sql)
 	print("The bot's adress is",a)
+	conn.commit()
 	return "true"
 
 
-sendToDatabase("hallo", 7, "test@cisco.com")
+sendToDatabase("hallo", 8, "test@cisco.com")
