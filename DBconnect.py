@@ -1,5 +1,17 @@
 import mysql.connector
 
+def createDatabase(personName):
+	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
+                              host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
+                              database='brainspark')
+	mycursor=conn.cursor()
+	ID_NUMBER = 2568
+	mycursor.execute("""CREATE TABLE '%s' (QUESTION INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(50) DEFAULT NULL,    
+PRIZE_TOTAL VARCHAR(50) DEFAULT NULL, STRENGTH VARCHAR(50) DEFAULT NULL, URL VARCHAR(50) DEFAULT  
+NULL ) ENGINE=MyISAM DEFAULT CHARSET=latin1""" % (personName))
+	conn.commit()
+	return "true"
+
 def sendToDatabase(message, personEmail, bot):
 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
@@ -26,6 +38,6 @@ def pullFromDatabase(message, personEmail):
 	conn.commit()
 	return "true"
 
-
+createDatabase("chris")
 # sendToDatabase("hallo", 65745, "test@cisco.com")
-pullFromDatabase("message", "personEmail")
+# pullFromDatabase("message", "personEmail")
