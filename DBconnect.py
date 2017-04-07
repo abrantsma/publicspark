@@ -15,7 +15,7 @@ def createDatabase(personName):
 
 
 
-def sendToDatabase(personName,message,answer):
+def sendToDatabase(personName,answer):
 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
