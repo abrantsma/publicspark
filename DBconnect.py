@@ -19,8 +19,10 @@ def pullFromDatabase(message, personEmail):
 	try:
 		mycursor.execute(sql)
 		results = mycursor.fetchall()
-		print(results)
-	# conn.commit()
+		print (results)
+	except:
+		print ""
+	conn.commit()
 	return "true"
 
 
