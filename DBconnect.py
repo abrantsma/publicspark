@@ -11,6 +11,7 @@ def sendToDatabase(message, personEmail, bot):
 # print(mycursor.fetchall())
 
 def pullFromDatabase(message, personEmail):
+	mycursor=conn.cursor()
 	mycursor.execute("SELECT * FROM ideas")
 	a = mycursor.execute(sql)
 	print("The bot's adress is",a)
