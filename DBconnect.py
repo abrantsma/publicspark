@@ -5,7 +5,7 @@ def createDatabase(personName):
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	mycursor.execute("CREATE TABLE %s (Question INT PRIMARY KEY AUTO_INCREMENT, Answer TEXT)" % (personName))
+	mycursor.execute("CREATE TABLE %s (Question INT PRIMARY KEY, Answer TEXT)" % (personName))
 	conn.commit()
 	return "true"
 
@@ -15,12 +15,12 @@ def createDatabase(personName):
 
 
 
-def sendToDatabase(personName,answer):
+def sendToDatabase(personName,id,answer):
 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	mycursor.execute("INSERT INTO %s VALUES ('%s')", (personName,answer))
+	mycursor.execute("INSERT INTO %s VALUES ('%d','%s')", (personName,id,answer))
 	conn.commit()
 	return "true"
 # print(mycursor.fetchall())
@@ -41,5 +41,5 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 # createDatabase("chris")
-sendToDatabase("chris","bla bla bla")
+sendToDatabase("chris",1,"bla bla bla")
 # pullFromDatabase("message", "personEmail")
