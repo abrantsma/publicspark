@@ -15,9 +15,10 @@ def pullFromDatabase(message, personEmail):
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	sql = "SELECT * FROM ideas WHERE userID = '%s'" % ("test@cisco.com")
+	# sql = "SELECT * FROM ideas WHERE userID = '%s'" % ("test@cisco.com")
+	t = ('test@cisco.com')
 	try:
-		mycursor.execute(sql)
+		mycursor.execute("SELECT * FROM ideas WHERE userID=?",t)
 		results = mycursor.fetchall()
 		print (results)
 	except:
