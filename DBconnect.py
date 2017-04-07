@@ -15,10 +15,10 @@ def pullFromDatabase(message, personEmail):
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	a = mycursor.execute("SELECT * FROM ideas")
+	a = mycursor.execute("SELECT * FROM ideas WHERE q2='test@cisco.com'")
 	# a = mycursor.execute(sql)
 	# print("The bot's adress is",a)
-	data = a.fetchall()
+	data = a.fetchone()
 	print(data)
 	conn.commit()
 	return "true"
