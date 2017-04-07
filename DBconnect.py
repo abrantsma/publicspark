@@ -11,7 +11,7 @@ def sendToDatabase(message, personEmail, bot):
 # print(mycursor.fetchall())
 
 def pullFromDatabase(message, personEmail):
-	sql = "SELECT * FROM ideas WHERE q2=`test@cisco.com`"
+	sql = "SELECT * FROM ideas"
 	mycursor.execute(sql)
 	a=mycursor.execute(sql)
 	print("The bot's adress is",a)
