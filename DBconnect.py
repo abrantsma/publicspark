@@ -15,13 +15,12 @@ def createDatabase(personName):
 
 
 
-def sendToDatabase(personName,message, personEmail, bot):
+def sendToDatabase(personName,message,answer):
 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
                               database='brainspark')
 	mycursor=conn.cursor()
-	ID_NUMBER = 2568
-	mycursor.execute("INSERT INTO %s (userID,q1,q2)" % (personName,ID_NUMBER,message,bot))
+	mycursor.execute("INSERT INTO %s (Question,Answer)" % (personName,message,answer))
 	conn.commit()
 	return "true"
 # print(mycursor.fetchall())
@@ -42,5 +41,5 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 createDatabase("chris")
-sendToDatabase("chris","hallo", 65745, "test@cisco.com")
+sendToDatabase("chris",1,"bla bla bla")
 # pullFromDatabase("message", "personEmail")
