@@ -40,6 +40,6 @@ def pullFromDatabase(message, personEmail):
 	conn.commit()
 	return "true"
 
-createDatabase("chris")
+# createDatabase("chris")
 sendToDatabase("chris","bla bla bla")
 # pullFromDatabase("message", "personEmail")
