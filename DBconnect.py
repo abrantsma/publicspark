@@ -12,7 +12,7 @@ def sendToDatabase(message, personEmail, bot):
 
 def pullFromDatabase(message, personEmail):
 	
-sql = 'SELECT * FROM ideas WHERE q2='test@cisco.com''
+sql = 'SELECT * FROM ideas WHERE q2=`test@cisco.com`;'
 
 mycursor.execute(sql)
 
