@@ -17,9 +17,9 @@ def pullFromDatabase(message, personEmail):
 	mycursor=conn.cursor()
 	a = mycursor.execute("SELECT * FROM ideas WHERE q2='test@cisco.com'")
 	# a = mycursor.execute(sql)
-	# print("The bot's adress is",a)
-	data = a.fetchone()
-	print(data)
+	print("The bot's adress is",a)
+	# data = a.fetchone()
+	# print(data)
 	conn.commit()
 	return "true"
 
