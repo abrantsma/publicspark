@@ -11,10 +11,6 @@ def createDatabase(personName):
 
 
 
-
-
-
-
 def sendToDatabase(personName,answer):
 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
@@ -41,5 +37,5 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 # createDatabase("chris")
-sendToDatabase("chris","bla bla bla")
+# sendToDatabase("chris","bla bla bla")
 # pullFromDatabase("message", "personEmail")
