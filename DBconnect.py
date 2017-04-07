@@ -6,11 +6,15 @@ def createDatabase(personName):
                               database='brainspark')
 	mycursor=conn.cursor()
 	ID_NUMBER = 2568
-	mycursor.execute("""CREATE TABLE '%s' (QUESTION INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(50) DEFAULT NULL,    
-PRIZE_TOTAL VARCHAR(50) DEFAULT NULL, STRENGTH VARCHAR(50) DEFAULT NULL, URL VARCHAR(50) DEFAULT  
-NULL ) ENGINE=MyISAM DEFAULT CHARSET=latin1""" % (personName))
+	mycursor.execute("CREATE TABLE '%s' (QUESTION INT PRIMARY KEY AUTO_INCREMENT)" % (personName))
 	conn.commit()
 	return "true"
+
+
+
+
+
+
 
 def sendToDatabase(message, personEmail, bot):
 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
