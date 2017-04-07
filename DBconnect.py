@@ -20,4 +20,4 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 
-sendToDatabase("hallo", 8, "test@cisco.com")
+sendToDatabase("hallo", 9, "test@cisco.com")
