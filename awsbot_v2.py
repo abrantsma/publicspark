@@ -56,7 +56,7 @@ def index(request):
                 #Temp making sure it tries to do this:
                 spark.messages.create(toPersonEmail=message.personEmail, text="processing...")
                 # TODO: Save message. Generate response. Save response. Send response.
-                #sendToDatabase(message.text, message.personEmail, bot_email)
+                sendToDatabase(message.text, message.personEmail, bot_email)
                 # Database definition: Message, From, To.
                 response = generateResponse(message.text, message.personEmail, message.roomId)
                 #sendToDatabase(response, bot_email, message.personEmail)
