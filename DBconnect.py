@@ -20,5 +20,5 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 
-sendToDatabase("hallo", 10, "test@cisco.com")
+sendToDatabase("hallo", 11, "test@cisco.com")
 pullFromDatabase("message", "personEmail")
