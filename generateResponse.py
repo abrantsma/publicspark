@@ -1,5 +1,3 @@
-from DBconnect.py import pullFromDatabase
-
 def generateResponse(message, personEmail):
 	pullFromDatabase(message, personEmail)
 	Q1 = "question1"
