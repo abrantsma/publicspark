@@ -60,7 +60,7 @@ def index(request):
                 # TODO: Save message. Generate response. Save response. Send response.
                 sendToDatabase(message.personEmail.replace('@cisco.com','').replace('@gmail.com',''), message.text)
                 # Database definition: Message, From, To.
-                response = generateResponse(message.text, message.personEmail, message.roomId)
+                response = generateResponse(message.text, message.personEmail)
                 #sendToDatabase(response, bot_email, message.personEmail)
                 spark.messages.create(toPersonEmail=message.personEmail, text=response)
             else:
