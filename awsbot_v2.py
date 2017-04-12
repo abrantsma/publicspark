@@ -31,7 +31,7 @@ def index(request):
                 if Membership.personEmail != bot_email and Membership.personEmail != security_email: # filter out the bot and cisco security bot, we dont want to send them a message!
                     INTRO_MESSAGE = "You have been invited to brainstorming session '%s'. Type 'help' for a brief introduction on how I work! What is your idea?" % (room_name.title)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=INTRO_MESSAGE)
-                    createDatabase(Membership.personEmail.replace(@cisco.com, ''))
+                    createDatabase(Membership.personEmail.replace('@cisco.com', ''))
                     #TODO: Save list of people involved in this brainstorm & group roomId.
                     # Likely another database. This one is roomId, memberList.
         # conditional to end the test
@@ -57,7 +57,7 @@ def index(request):
                 #Temp making sure it tries to do this:
                 spark.messages.create(toPersonEmail=message.personEmail, text="processing...")
                 # TODO: Save message. Generate response. Save response. Send response.
-                sendToDatabase(message.personEmail.replace(@cisco.com,''), message.text)
+                sendToDatabase(message.personEmail.replace('@cisco.com',''), message.text)
                 # Database definition: Message, From, To.
                 response = generateResponse(message.text, message.personEmail, message.roomId)
                 #sendToDatabase(response, bot_email, message.personEmail)
