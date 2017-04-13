@@ -5,7 +5,7 @@ import requests
 import sys
 import os
 from generateResponse import generateResponse
-from DBconnect import sendToDatabase, pullFromDatabase, createDatabase
+from DBconnect import sendToDatabase, pullFromDatabase, createDatabase, deleteDatabase
 
 @post('/')
 def index(request):
@@ -46,6 +46,7 @@ def index(request):
                 if Membership.personEmail != bot_email and Membership.personEmail != security_email:
                     END_MESSAGE = "Brainstorming session '%s' is ending." % (room_name.title)
                     spark.messages.create(toPersonEmail=Membership.personEmail, text=END_MESSAGE)
+                    deleteDatabase(Membership.personEmail.replace('@cisco.com', '').replace('@gmail.com',''))
             #TODO: Send the best idea to the group chat.
             BEST_IDEA = "The best idea." #getBestIdea(room_id)
             spark.messages.create(roomId=room_id, text=BEST_IDEA)
