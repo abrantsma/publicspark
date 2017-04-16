@@ -1,5 +1,6 @@
+from DBconnect import pullFromDatabase
 def generateResponse(message, personEmail):
-	# pullFromDatabase(message, personEmail)
+	pullFromDatabase(message, personEmail)
 	Q1 = "question1"
 	Q2 = "question2"
 	Q3 = "question3"
