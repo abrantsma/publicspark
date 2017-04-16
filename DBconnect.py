@@ -46,6 +46,6 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 # createDatabase("chris")
-deleteDatabase("ctsioura")
+# deleteDatabase("ctsioura")
 # sendToDatabase("chris","bla bla bla")
 # pullFromDatabase("message", "personEmail")
