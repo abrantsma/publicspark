@@ -46,14 +46,14 @@ def pullFromDatabase(message, personEmail):
 	return "true"
 
 
-def createTemplateDB(tempName):
-	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
-                              host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
-                              database='brainspark')
-	mycursor=conn.cursor()
-	mycursor.execute("CREATE TABLE Templates (Question INT PRIMARY KEY AUTO_INCREMENT, Name TEXT)")
-	conn.commit()
-	return "true"
+# def createTemplateDB(tempName):
+# 	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
+#                               host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
+#                               database='brainspark')
+# 	mycursor=conn.cursor()
+# 	mycursor.execute("CREATE TABLE Templates (Question INT PRIMARY KEY AUTO_INCREMENT, Name TEXT)")
+# 	conn.commit()
+# 	return "true"
 
 
 
