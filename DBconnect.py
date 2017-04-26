@@ -45,7 +45,45 @@ def pullFromDatabase(message, personEmail):
 	conn.commit()
 	return "true"
 
+
+def createTemplateDB(tempName):
+	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
+                              host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
+                              database='brainspark')
+	mycursor=conn.cursor()
+	mycursor.execute("CREATE TABLE Templates (Question INT PRIMARY KEY AUTO_INCREMENT, Name TEXT)")
+	conn.commit()
+	return "true"
+
+
+
+def createTemplate(tempName):
+	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
+                              host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
+                              database='brainspark')
+	mycursor=conn.cursor()
+	mycursor.execute("CREATE TABLE %s (Question INT PRIMARY KEY AUTO_INCREMENT, Answer TEXT)" % (tempName))
+	mycursor.execute("INSERT INTO Templates (Name) VALUES ('%s')" % (tempName))
+	conn.commit()
+	return "true"
+
+def sendToTemp(tempName,question):
+	conn = mysql.connector.connect(user='brainspark', password='C!sco123',
+                              host='brainspark.cptvcix7ijfy.us-west-2.rds.amazonaws.com',
+                              database='brainspark')
+	mycursor=conn.cursor()
+	mycursor.execute("INSERT INTO %s (Answer) VALUES ('%s')" % (tempName,question))
+	conn.commit()
+	return "true"
+
+
+
+
+
+
+
+
 # createDatabase("chris")
-# deleteDatabase("ctsioura")
+deleteDatabase("ctsioura")
 # sendToDatabase("chris","bla bla bla")
 # pullFromDatabase("message", "personEmail")
